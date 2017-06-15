@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$accounts = App\Accounts::all();
+
+
+    return view('welcome',compact('accounts'));
 });

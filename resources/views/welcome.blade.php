@@ -79,7 +79,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   @foreach($accounts as $key=>$val)
+                    {{$val->title}}
+                   @endforeach
                 </div>
 
                 <div class="links">
