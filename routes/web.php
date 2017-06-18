@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-	$accounts = App\Accounts::all();
+Route::get('/', 'PostsController@index');
 
 
-    return view('welcome',compact('accounts'));
-});
+Route::get('/posts/create', 'PostsController@create');
+
