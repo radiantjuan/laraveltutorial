@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\Comment;
 
-class PostsController extends Controller
+class AccountsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index',compact('posts'));
+        //
+        return view('admin.login.login');
     }
 
     /**
@@ -27,7 +25,6 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
     }
 
     /**
@@ -38,27 +35,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
-        // $post = new Post;
-        // $post->title = $request->title;
-        // $post->body = $request->body;
-        // $post->save();
-
-        // Post::create([
-        //     'title' => $request->title,
-        //     'body' => $request->body,
-
-        // ]);
-
-        $this->validate(request(),[
-            'title' => 'required',
-            'body' => 'required',
-
-        ]);
-
-        Post::create($request->all());
-
-        return redirect('/');
+        //
     }
 
     /**
@@ -67,9 +44,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('posts.single',compact('post'));
+        //
     }
 
     /**
@@ -104,15 +81,5 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function addComment(Post $post){
-
-        $this->validate(request(),['body' => 'required|min:2']);
-
-        $post->addComment(request('body'));
-
-        return back();
-
     }
 }

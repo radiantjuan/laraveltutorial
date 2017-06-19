@@ -11,20 +11,22 @@
 	<div class="col-sm-8 blog-main">
 		<h1>create</h1>
 		<hr>
-		<form>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">Email Address</span>
-				<input type="text" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+		<form method="POST" action="/posts">
+			{{ csrf_field() }}
+			<div class="form-group">
+				<label for="title"></label>
+				<input type="text" class="form-control" name="title" placeholder="Title" aria-describedby="basic-addon1">
 			</div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">@</span>
-				<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+			<div class="form-group">
+				<label for="title"></label>
+				<textarea type="text" class="form-control" name="body"></textarea>
 			</div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">@</span>
-				<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+			<div class="form-group">
+				<input type="Submit" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
 			</div>
+			
 		</form>
+		@include('layout.error')
 	</div><!-- /.blog-main -->
 
 	{{-- SIDEBAR --}}
