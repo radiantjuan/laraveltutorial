@@ -22,11 +22,11 @@
 				<textarea type="text" class="form-control" name="body"></textarea>
 			</div>
 			<div class="form-group">
-				<input type="Submit" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+				<input type="Submit" class="form-control btn btn-default" placeholder="Username" aria-describedby="basic-addon1">
 			</div>
 			
 		</form>
-		@include('layout.error')
+		@include('layout.errors')
 	</div><!-- /.blog-main -->
 
 	{{-- SIDEBAR --}}

@@ -13,10 +13,17 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        $this->middleware('auth')->except(['index','show']);
+    }
+
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index',compact('posts'));
+        $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')->groupBy('year','month')->get()->toArray();
+
+        return view('posts.index',compact('posts','archives'));
     }
 
     /**
@@ -53,10 +60,11 @@ class PostsController extends Controller
         $this->validate(request(),[
             'title' => 'required',
             'body' => 'required',
-
         ]);
 
-        Post::create($request->all());
+        auth()->user()->publish(
+            new Post(['title','body'])
+        );
 
         return redirect('/');
     }

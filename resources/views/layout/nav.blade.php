@@ -6,6 +6,9 @@
       <a class="blog-nav-item" href="#">Press</a>
       <a class="blog-nav-item" href="#">New hires</a>
       <a class="blog-nav-item" href="#">About</a>
+      @if(auth()->check())
+      	<a class="blog-nav-item ml-auto" href="#">{{ auth()->user()->name }}</a>
+   	  @endif
     </nav>
   </div>
 </div>
